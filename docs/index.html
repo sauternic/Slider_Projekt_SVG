@@ -1,0 +1,115 @@
+<!doctype html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Slider</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: wheat;
+        }
+
+        svg#leinwand {
+            border: 1px solid black;
+            background-color: aqua;
+        }
+    </style>
+    <script src="Slider_Script.js"></script>
+    <script>
+        //'use strict';
+        window.onload = function () {
+            //NameSpace Importieren
+            var _ = NameSpace_Nicolas_Slider.Modul_Allein;
+
+            //Event für den Wechsel auf ein anderes Element (nötig weil nur 1Script für 3 Sliders!)
+            document.querySelector('#slider1').addEventListener('mouseenter', aufruf);
+            document.querySelector('#slider2').addEventListener('mouseenter', aufruf);
+            document.querySelector('#slider3').addEventListener('mouseenter', aufruf);
+
+            //Alle Slider Initalisieren (Darstellung läuft übers das Script    
+            //Alle Alternativen zum 'eval' Code unten Angegeben:
+            //for (let x = 1; x <= 3; x++) { _.sliderStart(90, eval('slider' + x)); }
+            //for (let x = 1; x <= 3; x++) { _.sliderStart(90, window['slider' + x]); }
+            for (let x = 1; x <= 3; x++) { _.sliderStart(90, document.querySelector('#slider' + x)); }
+            //for (let x = 1; x <= 3; x++) { _.sliderStart(90, document.getElementById('slider' + x)); }
+
+            function aufruf(ev) {
+                //Argumente: 'obere Grenze' und id des Sliders          
+                _.sliderStart(90, ev.srcElement);
+            }
+
+            //Empfänger, über Globales window Objekt kommt der Event rein! :))))
+
+            //Bzw. hier wird eine neue 'Eigenschaft' des window Objekt Erzeugt.
+            //'Eigenschaft' besteht immer aus 'Name' und 'Wert' Paaren. (key: value)
+            //'Name' = oninput_myslider
+            //'Wert' = function(wert){...}
+            window.oninput_myslider = function (wert) {
+                //Drehen des Rechtecks um seine Mitte
+                rect1.setAttribute('transform', 'rotate(' + wert + ',750,350)')
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <div>
+        <!--Mit Wanderndes Text Feld-->
+        <input type="text"></input>
+        <!--Slider   width beliebig Einstellbar-->
+        <svg id="slider1" xmlns="http://www.w3.org/2000/svg" width="1800">
+            <!--Titel-->
+            <text y="25" font-family="Verdana" font-size="30">Slider 1</text>
+            <!--Regel Knopf-->
+            <rect x="0" y="30" width="20" height="20" fill="fuchsia"></rect>
+            <!--Führung des reglers-->
+            <line x1="0" y1="30" y2="30" stroke-width="2" stroke="black"></line>
+            <line x1="0" y1="50" y2="50" stroke-width="2" stroke="black"></line>
+        </svg>
+    </div>
+
+    <div>
+        <!--Mit Wanderndes Text Feld-->
+        <input type="text"></input>
+        <!--Slider   width beliebig Einstellbar-->
+        <svg id="slider2" xmlns="http://www.w3.org/2000/svg" width="600">
+            <!--Titel-->
+            <text y="25" font-family="Verdana" font-size="30">Slider 2</text>
+            <!--Regel Knopf-->
+            <rect x="0" y="30" width="20" height="20" fill="fuchsia"></rect>
+            <!--Führung des reglers-->
+            <line x1="0" y1="30" y2="30" stroke-width="2" stroke="black"></line>
+            <line x1="0" y1="50" y2="50" stroke-width="2" stroke="black"></line>
+        </svg>
+    </div>
+
+    <div>
+        <!--Mit Wanderndes Text Feld-->
+        <input type="text"></input>
+        <!--Slider   width beliebig Einstellbar-->
+        <svg id="slider3" xmlns="http://www.w3.org/2000/svg" width="600">
+            <!--Titel-->
+            <text y="25" font-family="Verdana" font-size="30">Slider 3</text>
+            <!--Regel Knopf-->
+            <rect x="0" y="30" width="20" height="20" fill="fuchsia"></rect>
+            <!--Führung des reglers-->
+            <line x1="0" y1="30" y2="30" stroke-width="2" stroke="black"></line>
+            <line x1="0" y1="50" y2="50" stroke-width="2" stroke="black"></line>
+        </svg>
+    </div>
+
+    <svg id="leinwand" xmlns="http://www.w3.org/2000/svg" width="1500" height="800">
+        <rect id="rect1" x="500" y="200" width="500" height="300" fill="red" stroke='#000000' stroke-width='4' style="border: 2px solid red;"></rect>
+    </svg>
+
+</body>
+
+</html>

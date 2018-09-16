@@ -16,4 +16,4 @@ Aber auf:
 - IE
 - Edge
 
-## Vorschau:  [link](https://htmlpreview.github.io/?https://github.com/sauternic/Slider_Projekt_SVG/blob/master/Slider_Projek_ein_Script.html)
+# [Show](https://htmlpreview.github.io/?https://github.com/sauternic/Slider_Projekt_SVG/blob/master/Slider_Projek_ein_Script.html)
